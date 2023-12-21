@@ -28,6 +28,7 @@ module "network" {
 
 module "postgresql" {
   source = "../../modules/postgresql"
+  depends_on = [module.network]
 
   environment  = var.environment
   region       = var.region
@@ -36,6 +37,7 @@ module "postgresql" {
 
 module "redis" {
   source = "../../modules/redis"
+  depends_on = [module.network]
 
   environment  = var.environment
   region       = var.region
