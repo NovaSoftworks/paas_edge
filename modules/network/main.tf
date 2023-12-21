@@ -1,5 +1,5 @@
 locals {
-  component = "novacp-${var.environment}-${var.region_short}-vnet"
+  component = "novacp-${var.environment}-${var.region_short}-nexus-vnet"
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -12,4 +12,18 @@ resource "azurerm_virtual_network" "vnet" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/8"]
+}
+
+resource "azurerm_subnet" "postgresql_subnet" {
+  name                 = "postgresql"
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  resource_group_name  = azurerm_resource_group.rg.name
+  address_prefixes     = ["10.0.100.0/24"]
+}
+
+resource "azurerm_subnet" "redis_subnet" {
+  name                 = "redis"
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  resource_group_name  = azurerm_resource_group.rg.name
+  address_prefixes     = ["10.0.101.0/24"]
 }
