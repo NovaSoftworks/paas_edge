@@ -18,6 +18,14 @@ provider "azurerm" {
   features {}
 }
 
+module "network" {
+  source = "../../modules/network"
+
+  environment  = var.environment
+  region       = var.region
+  region_short = var.region_short
+}
+
 module "postgresql" {
   source = "../../modules/postgresql"
 
