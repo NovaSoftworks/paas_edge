@@ -37,6 +37,8 @@ module "postgres" {
   postgres_sku      = "B_Standard_B1ms"
   postgres_username = var.postgres_username
   postgres_password = var.postgres_password
+
+  postgres_subnet_id = module.network.postgres_subnet_id
 }
 
 module "redis" {

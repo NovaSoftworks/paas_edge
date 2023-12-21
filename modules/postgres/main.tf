@@ -17,4 +17,6 @@ resource "azurerm_postgresql_flexible_server" "postgres" {
   storage_mb             = 32768
   sku_name               = var.postgres_sku
   backup_retention_days  = 7
+
+  delegated_subnet_id = var.postgres_subnet_id
 }

@@ -28,3 +28,8 @@ variable "postgres_sku" {
   type        = string
   description = "postgres SKU to use for the server."
 }
+
+variable "postgres_subnet_id" {
+  type        = string
+  description = "The ID of the subnet to which the PostgreSQL server will be connected"
+}
