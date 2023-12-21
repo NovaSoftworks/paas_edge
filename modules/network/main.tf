@@ -18,12 +18,12 @@ resource "azurerm_subnet" "postgresql_subnet" {
   name                 = "postgresql"
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name  = azurerm_resource_group.rg.name
-  address_prefixes     = ["10.100.0.0/16"]
+  address_prefixes     = ["10.10.0.0/24"]
 }
 
 resource "azurerm_subnet" "redis_subnet" {
   name                 = "redis"
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name  = azurerm_resource_group.rg.name
-  address_prefixes     = ["10.101.0.0/16"]
+  address_prefixes     = ["10.10.1.0/24"]
 }
