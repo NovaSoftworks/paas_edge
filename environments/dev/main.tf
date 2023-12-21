@@ -26,17 +26,17 @@ module "network" {
   region_short = var.region_short
 }
 
-module "postgresql" {
-  source     = "../../modules/postgresql"
+module "postgres" {
+  source     = "../../modules/postgres"
   depends_on = [module.network]
 
   environment  = var.environment
   region       = var.region
   region_short = var.region_short
 
-  postgresql_sku      = "B_Standard_B1ms"
-  postgresql_username = var.postgresql_username
-  postgresql_password = var.postgresql_password
+  postgres_sku      = "B_Standard_B1ms"
+  postgres_username = var.postgres_username
+  postgres_password = var.postgres_password
 }
 
 module "redis" {

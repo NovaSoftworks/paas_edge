@@ -13,13 +13,13 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
-variable "postgresql_username" {
+variable "postgres_username" {
   type        = string
-  description = "Postgresql administrator username"
+  description = "postgres administrator username"
 }
 
-variable "postgresql_password" {
+variable "postgres_password" {
   type        = string
-  description = "Postgresql administrator username"
+  description = "postgres administrator username"
   sensitive   = true
 }
