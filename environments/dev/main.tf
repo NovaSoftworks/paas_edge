@@ -33,7 +33,7 @@ module "jumpbox" {
   region       = var.region
   region_short = var.region_short
 
-  jumpbox_sku      = var.default_sku
+  jumpbox_vm_size  = var.jumpbox_vm_size
   jumpbox_username = var.jumpbox_username
   jumpbox_password = var.jumpbox_password
 
@@ -48,7 +48,7 @@ module "postgres" {
   region       = var.region
   region_short = var.region_short
 
-  postgres_sku      = var.default_sku
+  postgres_vm_size  = var.postgres_vm_size
   postgres_username = var.postgres_username
   postgres_password = var.postgres_password
 

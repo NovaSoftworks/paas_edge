@@ -24,9 +24,9 @@ variable "postgres_password" {
   sensitive   = true
 }
 
-variable "postgres_sku" {
+variable "postgres_vm_size" {
   type        = string
-  description = "postgres SKU to use for the server."
+  description = "Default VM size used for PostgreSQL."
 }
 
 variable "postgres_dns_id" {

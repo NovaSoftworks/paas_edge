@@ -13,9 +13,9 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
-variable "default_sku" {
+variable "jumpbox_vm_size" {
   type        = string
-  description = "Default SKU used for virtual machines."
+  description = "Default VM size used for the Jumpbox."
 }
 
 variable "jumpbox_username" {
@@ -27,6 +27,11 @@ variable "jumpbox_password" {
   type        = string
   description = "Jumpbox administrator password"
   sensitive   = true
+}
+
+variable "postgres_vm_size" {
+  type        = string
+  description = "Default VM size used for PostgreSQL."
 }
 
 variable "postgres_username" {

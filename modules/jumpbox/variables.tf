@@ -24,9 +24,9 @@ variable "jumpbox_password" {
   sensitive   = true
 }
 
-variable "jumpbox_sku" {
+variable "jumpbox_vm_size" {
   type        = string
-  description = "Jumpbox SKU to use for the VM."
+  description = "Default VM size used for the Jumpbox."
 }
 
 variable "jumpbox_subnet_id" {

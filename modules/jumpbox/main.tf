@@ -34,7 +34,7 @@ resource "azurerm_windows_virtual_machine" "jumpbox" {
   name                = "${local.component}-jumpbox"
   resource_group_name = azurerm_resource_group.jumpbox_rg.name
   location            = azurerm_resource_group.jumpbox_rg.location
-  size                = var.jumpbox_sku
+  size                = var.jumpbox_vm_size
   computer_name       = "nexus-jumpbox"
   admin_username      = var.jumpbox_username
   admin_password      = var.jumpbox_password
