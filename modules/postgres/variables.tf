@@ -15,12 +15,12 @@ variable "region_short" {
 
 variable "postgres_username" {
   type        = string
-  description = "postgres administrator username"
+  description = "PostgreSQL administrator username"
 }
 
 variable "postgres_password" {
   type        = string
-  description = "postgres administrator username"
+  description = "PostgreSQL administrator password"
   sensitive   = true
 }
 
