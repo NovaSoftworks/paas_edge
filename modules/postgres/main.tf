@@ -18,6 +18,6 @@ resource "azurerm_postgresql_flexible_server" "postgres" {
   sku_name               = var.postgres_sku
   backup_retention_days  = 7
 
-  private_dns_zone_id = var.dns_id
+  private_dns_zone_id = var.postgres_dns_id
   delegated_subnet_id = var.postgres_subnet_id
 }

@@ -29,9 +29,9 @@ variable "postgres_sku" {
   description = "postgres SKU to use for the server."
 }
 
-variable "dns_id" {
+variable "postgres_dns_id" {
   type        = string
-  description = "The ID of the Private DNS zone for the Nexus virtual network"
+  description = "The ID of the Private DNS zone for PostgreSQL"
 }
 
 variable "postgres_subnet_id" {

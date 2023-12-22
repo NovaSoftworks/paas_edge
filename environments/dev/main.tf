@@ -38,7 +38,7 @@ module "postgres" {
   postgres_username = var.postgres_username
   postgres_password = var.postgres_password
 
-  dns_id             = module.network.dns_id
+  postgres_dns_id    = module.network.postgres_dns_id
   postgres_subnet_id = module.network.postgres_subnet_id
 }
 
