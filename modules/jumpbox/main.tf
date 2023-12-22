@@ -30,7 +30,7 @@ resource "azurerm_network_interface" "jumpbox_nic" {
 }
 
 # Virtual machine
-resource "azurerm_windows_virtual_machine" "jumpbox" {
+resource "azurerm_linux_virtual_machine" "jumpbox" {
   name                = "${local.component}-jumpbox"
   resource_group_name = azurerm_resource_group.jumpbox_rg.name
   location            = azurerm_resource_group.jumpbox_rg.location
