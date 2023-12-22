@@ -31,13 +31,14 @@ resource "azurerm_network_interface" "jumpbox_nic" {
 
 # Virtual machine
 resource "azurerm_linux_virtual_machine" "jumpbox" {
-  name                = "${local.component}-jumpbox"
-  resource_group_name = azurerm_resource_group.jumpbox_rg.name
-  location            = azurerm_resource_group.jumpbox_rg.location
-  size                = var.jumpbox_vm_size
-  computer_name       = "nexus-jumpbox"
-  admin_username      = var.jumpbox_username
-  admin_password      = var.jumpbox_password
+  name                            = "${local.component}-jumpbox"
+  resource_group_name             = azurerm_resource_group.jumpbox_rg.name
+  location                        = azurerm_resource_group.jumpbox_rg.location
+  size                            = var.jumpbox_vm_size
+  computer_name                   = "nexus-jumpbox"
+  disable_password_authentication = false
+  admin_username                  = var.jumpbox_username
+  admin_password                  = var.jumpbox_password
   network_interface_ids = [
     azurerm_network_interface.jumpbox_nic.id,
   ]
