@@ -20,4 +20,11 @@ resource "azurerm_postgresql_flexible_server" "postgres" {
 
   private_dns_zone_id = var.postgres_dns_id
   delegated_subnet_id = var.postgres_subnet_id
+
+  lifecycle {
+    ignore_changes = [
+      zone,
+      high_availability.0.standby_availability_zone
+    ]
+  }
 }
