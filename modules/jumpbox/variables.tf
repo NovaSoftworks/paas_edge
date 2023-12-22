@@ -13,29 +13,23 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
-variable "default_sku" {
-  type        = string
-  description = "Default SKU used for virtual machines."
-}
-
 variable "jumpbox_username" {
   type        = string
-  description = "Jumpbox administrator username"
+  description = "Jumpbox administrator username."
 }
 
 variable "jumpbox_password" {
   type        = string
-  description = "Jumpbox administrator password"
+  description = "Jumpbox administrator password."
   sensitive   = true
 }
 
-variable "postgres_username" {
+variable "jumpbox_sku" {
   type        = string
-  description = "PostgreSQL administrator username"
+  description = "Jumpbox SKU to use for the VM."
 }
 
-variable "postgres_password" {
+variable "jumpbox_subnet_id" {
   type        = string
-  description = "PostgreSQL administrator password"
-  sensitive   = true
+  description = "The ID of the subnet to which the Jumpbox will be connected."
 }

@@ -26,6 +26,20 @@ module "network" {
   region_short = var.region_short
 }
 
+module "jumpbox" {
+  source = "../../modules/jumpbox"
+
+  environment  = var.environment
+  region       = var.region
+  region_short = var.region_short
+
+  jumpbox_sku      = var.default_sku
+  jumpbox_username = var.jumpbox_username
+  jumpbox_password = var.jumpbox_password
+
+  jumpbox_subnet_id = module.network.jumpbox_subnet_id
+}
+
 module "postgres" {
   source     = "../../modules/postgres"
   depends_on = [module.network]
