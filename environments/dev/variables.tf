@@ -13,6 +13,11 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
+variable "default_sku" {
+  type        = string
+  description = "Default SKU used for virtual machines."
+}
+
 variable "postgres_username" {
   type        = string
   description = "PostgreSQL administrator username"

@@ -34,7 +34,7 @@ module "postgres" {
   region       = var.region
   region_short = var.region_short
 
-  postgres_sku      = "B_Standard_B1ms"
+  postgres_sku      = var.default_sku
   postgres_username = var.postgres_username
   postgres_password = var.postgres_password
 
