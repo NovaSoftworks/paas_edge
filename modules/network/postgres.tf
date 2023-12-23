@@ -3,8 +3,8 @@ resource "azurerm_private_dns_zone" "postgres_dns" {
   resource_group_name = azurerm_resource_group.vnet_rg.name
 }
 
-resource "azurerm_private_dns_zone_virtual_network_link" "example" {
-  name                  = "${local.component}-dns-link"
+resource "azurerm_private_dns_zone_virtual_network_link" "postgres_dns_link" {
+  name                  = "novacp-${var.environment}-${var.region_short}-nexus-postgres-dns-link"
   private_dns_zone_name = azurerm_private_dns_zone.postgres_dns.name
   virtual_network_id    = azurerm_virtual_network.vnet.id
   resource_group_name   = azurerm_resource_group.vnet_rg.name

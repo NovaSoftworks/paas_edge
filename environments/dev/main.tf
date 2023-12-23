@@ -64,4 +64,7 @@ module "mongo" {
   environment  = var.environment
   region       = var.region
   region_short = var.region_short
+
+  mongo_dns_id    = module.network.mongo_dns_id
+  mongo_subnet_id = module.network.mongo_subnet_id
 }

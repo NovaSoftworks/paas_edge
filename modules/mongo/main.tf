@@ -7,6 +7,26 @@ resource "azurerm_resource_group" "mongo_rg" {
   location = var.region
 }
 
+resource "azurerm_private_endpoint" "cosmosdb" {
+  name                = "novacp-${var.environment}-${var.region_short}-nexus-mongo-pe"
+  location            = azurerm_resource_group.mongo_rg.location
+  resource_group_name = azurerm_resource_group.mongo_rg.name
+  subnet_id           = var.mongo_subnet_id
+
+  private_service_connection {
+    name                           = "novacp-${var.environment}-${var.region_short}-nexus-mongo-private-connection"
+    private_connection_resource_id = azurerm_cosmosdb_account.mongo.id
+    subresource_names              = ["MongoDB"]
+    is_manual_connection           = false
+  }
+
+  private_dns_zone_group {
+    name                 = "novacp-${var.environment}-${var.region_short}-nexus-mongo-dns-zone-group"
+    private_dns_zone_ids = [var.mongo_dns_id]
+  }
+}
+
+
 resource "azurerm_cosmosdb_account" "mongo" {
   name                = "${local.component}-mongo"
   resource_group_name = azurerm_resource_group.mongo_rg.name
