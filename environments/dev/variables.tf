@@ -44,3 +44,8 @@ variable "postgres_password" {
   description = "PostgreSQL administrator password"
   sensitive   = true
 }
+
+variable "k8s_worker_vm_size" {
+  type        = string
+  description = "Default VM size used for Kubernetes workers."
+}

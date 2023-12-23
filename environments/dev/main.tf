@@ -76,4 +76,8 @@ module "k8s" {
   environment  = var.environment
   region       = var.region
   region_short = var.region_short
+
+  k8s_worker_vm_size = var.k8s_worker_vm_size
+
+  k8s_subnet_id = module.network.k8s_subnet_id
 }
