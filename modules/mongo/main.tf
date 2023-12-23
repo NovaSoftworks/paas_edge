@@ -41,6 +41,8 @@ resource "azurerm_cosmosdb_account" "mongo" {
     total_throughput_limit = 1000
   }
 
+  public_network_access_enabled = false
+
   consistency_policy {
     consistency_level       = "BoundedStaleness"
     max_interval_in_seconds = 5
