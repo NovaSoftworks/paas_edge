@@ -55,3 +55,12 @@ module "postgres" {
   postgres_dns_id    = module.network.postgres_dns_id
   postgres_subnet_id = module.network.postgres_subnet_id
 }
+
+module "mongo" {
+  source     = "../../modules/mongo"
+  depends_on = [module.network]
+
+  environment  = var.environment
+  region       = var.region
+  region_short = var.region_short
+}
