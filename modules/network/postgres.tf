@@ -1,5 +1,5 @@
 resource "azurerm_private_dns_zone" "postgres_dns" {
-  name                = "${var.environment}.${var.region_short}.postgres.database.azure.com"
+  name                = "postgres.database.azure.com"
   resource_group_name = azurerm_resource_group.vnet_rg.name
 }
 

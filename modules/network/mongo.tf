@@ -1,5 +1,5 @@
 resource "azurerm_private_dns_zone" "mongo_dns" {
-  name                = "${var.environment}.${var.region_short}.privatelink.mongo.cosmos.azure.com"
+  name                = "privatelink.mongo.cosmos.azure.com"
   resource_group_name = azurerm_resource_group.vnet_rg.name
 }
 
