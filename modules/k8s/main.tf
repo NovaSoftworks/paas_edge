@@ -11,7 +11,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   name                = "${local.component}-k8s"
   resource_group_name = azurerm_resource_group.k8s_rg.name
   location            = azurerm_resource_group.k8s_rg.location
-  dns_prefix          = "dns.k8s.nexus.${var.region_short}.${var.environment}.novacp"
+  dns_prefix          = "dns-k8s-nexus-${var.region_short}-${var.environment}-novacp"
   sku_tier            = var.k8s_sku_tier
 
   identity {
@@ -19,7 +19,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   }
 
   default_node_pool {
-    name            = "${local.component}-k8s-pool"
+    name            = "default"
     node_count      = var.k8s_node_count
     vm_size         = var.k8s_vm_size
     vnet_subnet_id  = var.k8s_subnet_id
