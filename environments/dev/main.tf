@@ -77,9 +77,11 @@ module "k8s" {
   region       = var.region
   region_short = var.region_short
 
-  k8s_sku_tier   = var.k8s_sku_tier
-  k8s_vm_size    = var.k8s_vm_size
-  k8s_node_count = var.k8s_node_count
+  k8s_sku_tier          = var.k8s_sku_tier
+  k8s_system_vm_size    = var.k8s_system_vm_size
+  k8s_system_node_count = var.k8s_system_node_count
+  k8s_spot_vm_size      = var.k8s_spot_vm_size
+  k8s_spot_node_count   = var.k8s_spot_node_count
 
   k8s_subnet_id = module.network.k8s_subnet_id
 }

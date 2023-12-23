@@ -20,8 +20,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
   default_node_pool {
     name            = "default"
-    node_count      = var.k8s_node_count
-    vm_size         = var.k8s_vm_size
+    node_count      = var.k8s_system_node_count
+    vm_size         = var.k8s_system_vm_size
     vnet_subnet_id  = var.k8s_subnet_id
     os_disk_size_gb = 30
   }
@@ -30,4 +30,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     network_plugin    = "azure"
     load_balancer_sku = "standard"
   }
+}
+
+resource "azurerm_kubernetes_cluster_node_pool" "k8s_spot_pool" {
+  name                  = "spot"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
+  vm_size               = var.k8s_spot_vm_size
+  node_count            = var.k8s_spot_node_count
 }
