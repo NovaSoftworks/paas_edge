@@ -14,7 +14,7 @@ resource "azurerm_subnet" "postgres_subnet" {
   name                 = "postgres"
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name  = azurerm_resource_group.vnet_rg.name
-  address_prefixes     = ["10.10.0.0/24"]
+  address_prefixes     = ["10.42.1.0/24"]
 
   delegation {
     name = "fs"
