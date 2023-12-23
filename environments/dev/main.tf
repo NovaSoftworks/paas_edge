@@ -27,7 +27,8 @@ module "network" {
 }
 
 module "jumpbox" {
-  source = "../../modules/jumpbox"
+  source     = "../../modules/jumpbox"
+  depends_on = [module.network]
 
   environment  = var.environment
   region       = var.region
