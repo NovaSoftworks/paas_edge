@@ -33,9 +33,9 @@ resource "azurerm_cosmosdb_account" "mongo" {
   }
 }
 
-resource "azurerm_cosmosdb_mongo_database" "mongo_testdb" {
+resource "azurerm_cosmosdb_mongo_database" "mongo_test_db" {
   name                = "${local.component}-mongo-test-db"
   resource_group_name = azurerm_resource_group.mongo_rg.name
-  account_name        = data.azurerm_cosmosdb_account.mongo.name
+  account_name        = azurerm_cosmosdb_account.mongo.name
   throughput          = 1000
 }
