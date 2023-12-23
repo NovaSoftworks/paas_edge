@@ -13,9 +13,19 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
-variable "k8s_worker_vm_size" {
+variable "k8s_sku_tier" {
+  type        = string
+  description = "Default SKU tier for Kubernetes cluster management."
+}
+
+variable "k8s_vm_size" {
   type        = string
   description = "Default VM size used for Kubernetes workers."
+}
+
+variable "k8s_node_count" {
+  type        = string
+  description = "How many worker nodes to use for Kubernetes."
 }
 
 variable "k8s_subnet_id" {

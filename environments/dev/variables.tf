@@ -45,7 +45,17 @@ variable "postgres_password" {
   sensitive   = true
 }
 
-variable "k8s_worker_vm_size" {
+variable "k8s_sku_tier" {
+  type        = string
+  description = "Default SKU tier for Kubernetes cluster management."
+}
+
+variable "k8s_vm_size" {
   type        = string
   description = "Default VM size used for Kubernetes workers."
+}
+
+variable "k8s_node_count" {
+  type        = string
+  description = "How many worker nodes to use for Kubernetes."
 }
