@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "mongo_rg" {
   location = var.region
 }
 
-resource "azurerm_private_endpoint" "cosmosdb" {
+resource "azurerm_private_endpoint" "mongo_pe" {
   name                = "novacp-${var.environment}-${var.region_short}-nexus-mongo-pe"
   location            = azurerm_resource_group.mongo_rg.location
   resource_group_name = azurerm_resource_group.mongo_rg.name
