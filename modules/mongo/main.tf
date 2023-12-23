@@ -16,6 +16,7 @@ resource "azurerm_cosmosdb_account" "mongo" {
 
   enable_automatic_failover = false
 
+  enable_free_tier = true
   capacity {
     total_throughput_limit = 1000
   }
@@ -30,4 +31,11 @@ resource "azurerm_cosmosdb_account" "mongo" {
     location          = azurerm_resource_group.mongo_rg.location
     failover_priority = 0
   }
+}
+
+resource "azurerm_cosmosdb_mongo_database" "mongo_testdb" {
+  name                = "${local.component}-mongo-test-db"
+  resource_group_name = azurerm_resource_group.mongo_rg.name
+  account_name        = data.azurerm_cosmosdb_account.mongo.name
+  throughput          = 1000
 }
