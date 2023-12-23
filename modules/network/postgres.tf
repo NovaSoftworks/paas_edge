@@ -1,5 +1,5 @@
 resource "azurerm_private_dns_zone" "postgres_dns" {
-  name                = "postgres.database.azure.com"
+  name                = "privatelink.postgres.database.azure.com"
   resource_group_name = azurerm_resource_group.vnet_rg.name
 }
 
