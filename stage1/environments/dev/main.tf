@@ -20,7 +20,7 @@ data "terraform_remote_state" "global" {
   config = {
     organization = "NovaSoftworks"
     workspaces = {
-      name = "global-infrastructure-prd"
+      name = "global-infrastructure-dev"
     }
   }
 }
