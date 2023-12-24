@@ -45,9 +45,3 @@ resource "azurerm_kubernetes_cluster_node_pool" "k8s_spot_pool" {
   os_disk_size_gb       = 30
   orchestrator_version  = local.orchestrator_version
 }
-
-resource "kubernetes_namespace" "k8s_namespace" {
-  metadata {
-    name = "nexus"
-  }
-}
