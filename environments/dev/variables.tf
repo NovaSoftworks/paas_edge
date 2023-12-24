@@ -29,22 +29,6 @@ variable "jumpbox_password" {
   sensitive   = true
 }
 
-variable "postgres_vm_size" {
-  type        = string
-  description = "Default VM size used for PostgreSQL."
-}
-
-variable "postgres_username" {
-  type        = string
-  description = "PostgreSQL administrator username"
-}
-
-variable "postgres_password" {
-  type        = string
-  description = "PostgreSQL administrator password"
-  sensitive   = true
-}
-
 variable "k8s_sku_tier" {
   type        = string
   description = "Default SKU tier for Kubernetes cluster management."
@@ -68,4 +52,20 @@ variable "k8s_spot_vm_size" {
 variable "k8s_spot_node_count" {
   type        = string
   description = "How many nodes to use for Kubernetes' spot pool."
+}
+
+variable "postgres_vm_size" {
+  type        = string
+  description = "Default VM size used for PostgreSQL."
+}
+
+variable "postgres_username" {
+  type        = string
+  description = "PostgreSQL administrator username"
+}
+
+variable "postgres_password" {
+  type        = string
+  description = "PostgreSQL administrator password"
+  sensitive   = true
 }
