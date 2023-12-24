@@ -58,7 +58,6 @@ module "k8s" {
   k8s_subnet_id = module.network.k8s_subnet_id
 }
 
-/*
 module "postgres" {
   source     = "../../modules/postgres"
   depends_on = [module.network]
@@ -86,4 +85,3 @@ module "mongo" {
   mongo_dns_id    = module.network.mongo_dns_id
   mongo_subnet_id = module.network.mongo_subnet_id
 }
-*/
