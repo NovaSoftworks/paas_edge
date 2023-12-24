@@ -18,6 +18,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     type = "SystemAssigned"
   }
 
+  node_resource_group = "${local.component}-k8s-node-rg"
+
   default_node_pool {
     name            = "default"
     node_count      = var.k8s_system_node_count
