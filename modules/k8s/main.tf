@@ -40,3 +40,9 @@ resource "azurerm_kubernetes_cluster_node_pool" "k8s_spot_pool" {
   vm_size               = var.k8s_spot_vm_size
   node_count            = var.k8s_spot_node_count
 }
+
+resource "kubernetes_namespace" "k8s_namespace" {
+  metadata {
+    name = "nexus"
+  }
+}
