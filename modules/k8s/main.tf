@@ -1,5 +1,6 @@
 locals {
-  component = "novacp-${var.environment}-${var.region_short}-nexus"
+  component            = "novacp-${var.environment}-${var.region_short}-nexus"
+  orchestrator_version = "1.27.7"
 }
 
 resource "azurerm_resource_group" "k8s_rg" {
@@ -21,11 +22,12 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   node_resource_group = "${local.component}-k8s-node-rg"
 
   default_node_pool {
-    name            = "default"
-    node_count      = var.k8s_system_node_count
-    vm_size         = var.k8s_system_vm_size
-    vnet_subnet_id  = var.k8s_subnet_id
-    os_disk_size_gb = 30
+    name                 = "default"
+    node_count           = var.k8s_system_node_count
+    vm_size              = var.k8s_system_vm_size
+    vnet_subnet_id       = var.k8s_subnet_id
+    os_disk_size_gb      = 30
+    orchestrator_version = local.orchestrator_version
   }
 
   network_profile {
@@ -37,8 +39,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 resource "azurerm_kubernetes_cluster_node_pool" "k8s_spot_pool" {
   name                  = "spot"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
-  vm_size               = var.k8s_spot_vm_size
   node_count            = var.k8s_spot_node_count
+  vm_size               = var.k8s_spot_vm_size
+  vnet_subnet_id        = var.k8s_subnet_id
+  os_disk_size_gb       = 30
+  orchestrator_version  = local.orchestrator_version
 }
 
 resource "kubernetes_namespace" "k8s_namespace" {
