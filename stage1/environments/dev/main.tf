@@ -14,6 +14,17 @@ terraform {
   }
 }
 
+data "terraform_remote_state" "global" {
+  backend = "remote"
+
+  config = {
+    organization = "NovaSoftworks"
+    workspaces = {
+      name = "global-infrastructure-prd"
+    }
+  }
+}
+
 provider "azurerm" {
   features {}
 }
@@ -56,6 +67,8 @@ module "k8s" {
   k8s_spot_node_count   = var.k8s_spot_node_count
 
   k8s_subnet_id = module.network.k8s_subnet_id
+
+  acr_id = data.terraform_remote_state.global.outputs.acr.id
 }
 
 module "postgres" {
