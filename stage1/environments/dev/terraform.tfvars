@@ -10,4 +10,4 @@ k8s_sku_tier          = "Free"
 k8s_system_vm_size    = "Standard_A2_v2"
 k8s_system_node_count = 1
 k8s_spot_vm_size      = "Standard_A2_v2" // Consider replacing with Standard_B2pts_v2 if quotas are updated
-k8s_spot_node_count   = 1
+k8s_spot_node_count   = 2
