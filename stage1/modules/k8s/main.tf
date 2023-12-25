@@ -39,9 +39,18 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 resource "azurerm_kubernetes_cluster_node_pool" "k8s_spot_pool" {
   name                  = "spot"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
-  node_count            = var.k8s_spot_node_count
-  vm_size               = var.k8s_spot_vm_size
-  vnet_subnet_id        = var.k8s_subnet_id
-  os_disk_size_gb       = 30
-  orchestrator_version  = local.orchestrator_version
+  priority              = "Spot"
+  eviction_policy       = "Delete"
+  spot_max_price        = "10" // TODO: create variable
+  node_labels = {
+    "kubernetes.azure.com/scalesetpriority" = "spot"
+  }
+  node_taints = [
+    "kubernetes.azure.com/scalesetpriority=spot:NoSchedule"
+  ]
+  node_count           = var.k8s_spot_node_count
+  vm_size              = var.k8s_spot_vm_size
+  vnet_subnet_id       = var.k8s_subnet_id
+  os_disk_size_gb      = 30
+  orchestrator_version = local.orchestrator_version
 }
