@@ -47,3 +47,9 @@ provider "kubernetes" {
 module "k8s" {
   source = "../../modules/k8s"
 }
+
+module "postgres" {
+  source = "../../modules/postgres"
+
+  postgres_id = data.terraform_remote_state.stage1.outputs.postgres.id
+}
