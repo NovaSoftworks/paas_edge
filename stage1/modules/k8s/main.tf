@@ -34,6 +34,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     network_plugin    = "azure"
     load_balancer_sku = "standard"
   }
+
+  service_mesh_profile {
+    mode                             = "Istio"
+    external_ingress_gateway_enabled = true
+  }
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "k8s_spot_pool" {
