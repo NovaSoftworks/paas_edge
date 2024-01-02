@@ -1,17 +1,17 @@
 resource "kubernetes_namespace" "k8_auth_namespace" {
   metadata {
     name = "auth"
-  }
-}
-
-resource "kubernetes_namespace" "k8_frontend_namespace" {
-  metadata {
-    name = "frontend"
+    labels = {
+      "istio.io/rev" = "asm-1-17"
+    }
   }
 }
 
 resource "kubernetes_namespace" "k8s_backend_namespace" {
   metadata {
     name = "backend"
+    labels = {
+      "istio.io/rev" = "asm-1-17"
+    }
   }
 }
