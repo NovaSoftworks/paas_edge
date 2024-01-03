@@ -15,13 +15,3 @@ resource "kubernetes_namespace" "k8s_backend_namespace" {
     }
   }
 }
-
-resource "helm_release" "k8s_cert_manager" {
-  name       = "cert-manager"
-  namespace  = "cert-manager"
-  repository = "https://charts.jetstack.io"
-  chart      = "jetstack/cert-manager"
-
-  create_namespace = true
-  skip_crds        = false
-}
