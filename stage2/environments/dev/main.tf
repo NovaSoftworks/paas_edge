@@ -59,6 +59,8 @@ provider "helm" {
 
 module "k8s" {
   source = "../../modules/k8s"
+
+  traefik_replicas = var.traefik_replicas
 }
 
 module "postgres" {
