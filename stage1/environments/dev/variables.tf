@@ -54,11 +54,6 @@ variable "k8s_spot_node_count" {
   description = "How many nodes to use for Kubernetes' spot pool."
 }
 
-variable "postgres_vm_size" {
-  type        = string
-  description = "Default VM size used for PostgreSQL."
-}
-
 variable "postgres_username" {
   type        = string
   description = "PostgreSQL administrator username"

@@ -70,31 +70,3 @@ module "k8s" {
 
   acr_id = data.terraform_remote_state.global.outputs.acr.id
 }
-
-module "postgres" {
-  source     = "../../modules/postgres"
-  depends_on = [module.network]
-
-  environment  = var.environment
-  region       = var.region
-  region_short = var.region_short
-
-  postgres_vm_size  = var.postgres_vm_size
-  postgres_username = var.postgres_username
-  postgres_password = var.postgres_password
-
-  postgres_dns_id    = module.network.postgres_dns_id
-  postgres_subnet_id = module.network.postgres_subnet_id
-}
-
-module "mongo" {
-  source     = "../../modules/mongo"
-  depends_on = [module.network]
-
-  environment  = var.environment
-  region       = var.region
-  region_short = var.region_short
-
-  mongo_dns_id    = module.network.mongo_dns_id
-  mongo_subnet_id = module.network.mongo_subnet_id
-}
