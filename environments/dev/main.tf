@@ -1,10 +1,6 @@
 terraform {
   required_version = ">= 1.1.0"
   required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.2"
-    }
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "~> 2.24"
@@ -17,28 +13,24 @@ terraform {
   cloud {
     organization = "NovaSoftworks"
     workspaces {
-      name = "nexus-infrastructure-stage2-dev"
+      name = "paas-edge-dev"
     }
   }
 }
 
-data "terraform_remote_state" "stage1" {
+data "terraform_remote_state" "infrastructure" {
   backend = "remote"
 
   config = {
     organization = "NovaSoftworks"
     workspaces = {
-      name = "nexus-infrastructure-stage1-dev"
+      name = "infrastructure-dev"
     }
   }
 }
 
-provider "azurerm" {
-  features {}
-}
-
 locals {
-  kube_config = data.terraform_remote_state.stage1.outputs.k8s.kube_config.0
+  kube_config = data.terraform_remote_state.infrastructure.outputs.k8s.kube_config.0
 }
 
 provider "kubernetes" {
@@ -57,14 +49,12 @@ provider "helm" {
   }
 }
 
-module "k8s" {
-  source = "../../modules/k8s"
-
-  traefik_replicas = var.traefik_replicas
+module "tls" {
+  source = "../../modules/tls"
 }
 
-module "postgres" {
-  source = "../../modules/postgres"
+module "ingress" {
+  source = "../../modules/ingress"
 
-  postgres_id = data.terraform_remote_state.stage1.outputs.postgres.id
+  traefik_replicas = var.traefik_replicas
 }
