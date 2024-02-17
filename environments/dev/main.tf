@@ -34,23 +34,23 @@ data "terraform_remote_state" "infrastructure" {
 }
 
 locals {
-  kube_config = data.terraform_remote_state.infrastructure.outputs.k8s.kube_config.0
+  infra = data.terraform_remote_state.infrastructure.outputs
 }
 
 provider "kubernetes" {
-  host                   = local.kube_config.host
-  client_certificate     = base64decode(local.kube_config.client_certificate)
-  client_key             = base64decode(local.kube_config.client_key)
-  cluster_ca_certificate = base64decode(local.kube_config.cluster_ca_certificate)
+  host                   = local.infra.paas_k8s_host
+  client_certificate     = local.infra.paas_k8s_client_certificate
+  client_key             = local.infra.paas_k8s_client_key
+  cluster_ca_certificate = local.infra.paas_k8s_cluster_ca_certificate
 
 }
 
 provider "helm" {
   kubernetes {
-    host                   = local.kube_config.host
-    client_certificate     = base64decode(local.kube_config.client_certificate)
-    client_key             = base64decode(local.kube_config.client_key)
-    cluster_ca_certificate = base64decode(local.kube_config.cluster_ca_certificate)
+    host                   = local.infra.paas_k8s_host
+    client_certificate     = local.infra.paas_k8s_client_certificate
+    client_key             = local.infra.paas_k8s_client_key
+    cluster_ca_certificate = local.infra.paas_k8s_cluster_ca_certificate
   }
 }
 
