@@ -56,6 +56,8 @@ provider "helm" {
 
 module "tls" {
   source = "../../modules/tls"
+
+  issuer_email = var.tls_issuer_email
 }
 
 module "ingress" {
