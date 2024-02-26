@@ -1,10 +1,9 @@
 resource "kubernetes_manifest" "cert_issuer_le_http" {
   manifest = {
     apiVersion = "cert-manager.io/v1"
-    kind       = "Issuer"
+    kind       = "ClusterIssuer"
     metadata = {
-      name      = "le-http"
-      namespace = kubernetes_namespace.cert_manager.metadata.0.name
+      name = "le-http"
     }
     spec = {
       acme = {
